@@ -10,13 +10,13 @@ private:
     std::string m_author; // i mean author of the game 
     int m_year{};
 public:
-    // default constructor
+    // Default constructor
     Game(){
         m_name = "unknown";
         m_author = "unknown";
         m_year = 0;
     }
-    // parameterized constructor used to add a new record in add_game function
+    // Parameterized constructor used to add a new record in add_game function
     Game(std::string n, std::string a, int y) : m_name(n.empty() ? "unknown" : n ), m_author(a.empty() ? "unknown" : a), m_year(y < 0 ? 0 : y){} 
     
     // setting the getters and setters
@@ -51,7 +51,7 @@ public:
         }
     }
 
-    // method saving an object to file - i have to modify it
+    // Method saving an object to file
     void save_to_file(const std::string& filename) const {
         std::ofstream file(filename, std::ios::app); 
         if (file.is_open()) {
@@ -62,12 +62,12 @@ public:
         }
     }
 
-    // method to display the created object
+    // Method to display the created object
     void display_game() const{
         cout<< "Name:"<< m_name << ",Author:" << m_author << ",Year:"<< m_year <<"\n";
     }
 
-    // method to remove a record from a database
+    // Method to remove a record from a database
     void remove_record(const std::string& filename, int linetoremove){
         std::ifstream inputFile(filename);
         std::ofstream tempFile("temp.txt");
@@ -77,7 +77,7 @@ public:
             cout << "Could not open the file";
             return;
         }
-        //  assign the contence without the line to delete
+        // assign the contence without the line to delete
         while(std::getline(inputFile, line)){
             if(currentLine != linetoremove){
                 tempFile << line << "\n";
